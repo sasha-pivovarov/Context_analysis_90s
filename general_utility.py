@@ -2,6 +2,8 @@ import json
 import jsonpickle
 import pymorphy2
 import os
+from bs4 import BeautifulSoup
+import re
 
 def get_subdirectories(a_dir):
     return [dirpath for dirpath, dirnames, filenames in os.walk(a_dir)]
@@ -33,3 +35,19 @@ def formdump():
     jsonstring_ninetyforms = jsonpickle.encode(ninetyforms)
     with open('/root/term_paper_2/ac_corpus_index/ninetyforms.json', 'w') as file:
         file.write(jsonstring_ninetyforms)
+
+
+def stringdump(paths):
+    longstring = ''
+    for path in paths:
+        with open(path, 'r') as file:
+            string = BeautifulSoup(file).p.string
+        longstring += ('\n' + string)
+
+    with open('/root/term_paper_2/ac_corpus_data/longstring_90.txt', 'w') as file:
+        file.write(longstring)
+
+
+def remove_brackets_from_string(string):
+    return re.sub('<.*?>', ' ', string)
+
