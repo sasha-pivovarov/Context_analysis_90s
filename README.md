@@ -1,1 +1,3 @@
 # Context_analysis_90s
+
+This is the corpus and code for S. Pivovarov's term paper on content analysis. The corpus is in Apache Lucene format, and should be loadable by the Java implementation of Lucene. The network_n_x.json files are collocation networks built on a corpus of texts about the Russian nineties. The corpus itself can be reconstructed using moivre_laplace.py by iteratively extracting probable objects and keywords from the initial query result. There is also a grabber for texts from sites (which doesn't work very well) and an attempt at LDA for the same task that moivre_laplace is used for (doesn't work at all). The rest of the files are probably of little use.
